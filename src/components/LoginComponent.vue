@@ -2,13 +2,17 @@
   <div id="login-component-container">
     <div class="input-container">
       <label for="user-input" class="label">User</label>
-      <input type="text" id="user-input" class="input" />
+      <input type="text" id="user-input" class="input" v-model="login" />
     </div>
 
     <div class="input-container">
       <label for="password-input" class="label">Password</label>
-      <input type="text" id="password-input" class="input" />
+      <input type="text" id="password-input" class="input" v-model="password" />
     </div>
+
+    <button class="login-button" @click="navigateToLoginConfirmation">
+      Entrar
+    </button>
   </div>
 </template>
 
@@ -19,7 +23,20 @@ export default defineComponent({
   name: "LoginComponent",
 
   data() {
-    return {};
+    return {
+      login: "",
+      password: "",
+    };
+  },
+  methods: {
+    navigateToLoginConfirmation() {
+      this.$router.push({
+        name: "login-confirmation",
+        params: {
+          login: this.login,
+        },
+      });
+    },
   },
 });
 </script>
@@ -59,5 +76,16 @@ export default defineComponent({
   border: 0;
   padding: 0 8px;
   box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.2);
+}
+
+.login-button {
+  width: 90px;
+  height: 45px;
+
+  border-radius: 12px;
+
+  background-color: rgb(99, 204, 99);
+  border: 0;
+  color: white;
 }
 </style>
