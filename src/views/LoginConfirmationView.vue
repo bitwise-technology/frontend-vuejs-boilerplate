@@ -1,16 +1,19 @@
 <template>
   <div id="home-view-container">
-    <login-component />
+    <login-confirmation-component :login="login" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import LoginComponent from "../components/LoginComponent.vue";
+import LoginConfirmationComponent from "../components/LoginConfirmationComponent.vue";
 
 export default defineComponent({
+  props: {
+    login: { type: String, required: true },
+  },
   components: {
-    LoginComponent,
+    LoginConfirmationComponent,
   },
 });
 </script>
