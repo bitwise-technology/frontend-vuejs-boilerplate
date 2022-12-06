@@ -13,4 +13,4 @@ jobs:
         with:
           build: yarn build
           wait-on: "http://localhost:4173"
-          start: test:e2e
+          start: yarn test:e2e
