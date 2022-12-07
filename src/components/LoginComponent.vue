@@ -2,12 +2,17 @@
   <div id="login-component-container">
     <div class="input-container">
       <label for="user-input" class="label">User</label>
-      <input type="text" id="user-input" class="input" v-model="login" />
+      <input type="text" id="user-input" class="input" v-model="user.name" />
     </div>
 
     <div class="input-container">
       <label for="password-input" class="label">Password</label>
-      <input type="text" id="password-input" class="input" v-model="password" />
+      <input
+        type="text"
+        id="password-input"
+        class="input"
+        v-model="user.password"
+      />
     </div>
 
     <button class="login-button" @click="navigateToLoginConfirmation">
@@ -19,21 +24,32 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
+import { mapActions } from "pinia";
+import { userStore } from "../stores/userStore";
+
+import type { User } from "../types";
+
 export default defineComponent({
   name: "LoginComponent",
 
   data() {
     return {
-      login: "",
-      password: "",
+      user: {
+        name: "",
+        password: "",
+      } as User,
     };
   },
   methods: {
+    ...mapActions(userStore, ["setUserAction"]),
+
     navigateToLoginConfirmation() {
+      this.setUserAction(this.user);
+
       this.$router.push({
         name: "login-confirmation",
         params: {
-          login: this.login,
+          login: this.user.name,
         },
       });
     },
