@@ -1,6 +1,11 @@
 [![E2E tests](https://github.com/bitwise-technology/frontend-vuejs-boilerplate/actions/workflows/main.yml/badge.svg)](https://github.com/bitwise-technology/frontend-vuejs-boilerplate/actions/workflows/main.yml)
 
-# frontend-vuejs-boilerplate
+<div class="images-container">
+<img src="./src/assets/images/BitwiseLogoColor1.svg">
+<img src="./src/assets/images/VuejsLogoColor1.svg">
+</div>
+
+# Vue3 Template
 
 This template should help get you started developing with Vue 3 in Vite.
 
