@@ -1,6 +1,6 @@
 // https://docs.cypress.io/api/introduction/api.html
 
-describe("Example Test", () => {
+describe("Example Test", { testIsolation: false }, () => {
   const user = "Tester_User";
 
   it("visits the app root url", () => {
