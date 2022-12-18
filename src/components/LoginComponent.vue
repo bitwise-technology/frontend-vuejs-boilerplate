@@ -2,7 +2,7 @@
   <div id="login-component-container">
     <div class="input-container">
       <label for="user-input" class="label">User</label>
-      <input type="text" id="user-input" class="input" v-model="user.name" />
+      <input type="text" id="user-input" class="input" v-model="user.email" />
     </div>
 
     <div class="input-container">
@@ -15,9 +15,7 @@
       />
     </div>
 
-    <button class="login-button" @click="navigateToLoginConfirmation">
-      Entrar
-    </button>
+    <button class="login-button" @click="handleLogin">Entrar</button>
   </div>
 </template>
 
@@ -28,6 +26,7 @@ import { mapActions } from "pinia";
 import { userStore } from "../stores/userStore";
 
 import type { User } from "../types";
+import type { AxiosError } from "axios";
 
 export default defineComponent({
   name: "LoginComponent",
@@ -35,23 +34,37 @@ export default defineComponent({
   data() {
     return {
       user: {
-        name: "",
+        email: "",
         password: "",
       } as User,
     };
   },
   methods: {
-    ...mapActions(userStore, ["setUserAction"]),
+    ...mapActions(userStore, [
+      "setUserAction",
+      "setAuthResponseAction",
+      "authWithEmailAndPasswordAction",
+    ]),
 
     navigateToLoginConfirmation() {
-      this.setUserAction(this.user);
-
       this.$router.push({
         name: "login-confirmation",
         params: {
-          login: this.user.name,
+          login: this.user.email,
         },
       });
+    },
+
+    async handleLogin() {
+      try {
+        const auth = await this.authWithEmailAndPasswordAction(this.user);
+
+        this.setAuthResponseAction(auth);
+        this.navigateToLoginConfirmation();
+      } catch (error) {
+        const typedError = error as AxiosError;
+        console.log(typedError);
+      }
     },
   },
 });
