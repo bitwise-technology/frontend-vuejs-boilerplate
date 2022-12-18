@@ -1,7 +1,6 @@
 [![E2E tests](https://github.com/bitwise-technology/frontend-vuejs-boilerplate/actions/workflows/main.yml/badge.svg)](https://github.com/bitwise-technology/frontend-vuejs-boilerplate/actions/workflows/main.yml)
 
-<img align="center" src="./src/assets/images/BitwiseLogoColor1.svg">
-<img align="center" src="./src/assets/images/VuejsLogoColor1.svg">
+<img align="center" src="./src/assets/images/BitwiseLogoColor1.svg"><img align="center" src="./src/assets/images/VuejsLogoColor1.svg">
 
 # Vue3 Template
 
