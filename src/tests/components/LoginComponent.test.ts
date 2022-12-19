@@ -7,18 +7,18 @@ describe("Given LoginComponent", () => {
 
   const wrapper = mount(LoginComponent);
 
-  describe("When inserts a valid user", () => {
-    wrapper.get('input[id="user-input"]').setValue("valid_user");
+  describe("When inserts a valid email", () => {
+    wrapper.get('input[id="user-input"]').setValue("valid_email");
 
     describe("When inserts a valid password", () => {
       wrapper.get('input[id="password-input"]').setValue("valid_password");
 
       test("Then login function should be called", () => {
         const spy = vi
-          .spyOn(wrapper.vm, "navigateToLoginConfirmation")
-          .mockImplementation(() => ({}));
+          .spyOn(wrapper.vm, "handleLogin")
+          .mockImplementation(async () => {});
 
-        wrapper.get("button").trigger("click");
+        wrapper.findComponent("form").trigger("submit");
 
         expect(spy).toHaveBeenCalledTimes(1);
       });

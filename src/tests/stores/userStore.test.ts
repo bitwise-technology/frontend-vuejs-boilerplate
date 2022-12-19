@@ -9,8 +9,10 @@ describe("Given userStore", () => {
   const store = userStore();
 
   const providedUser: User = {
+    name: "valid_name",
     email: "valid_email",
-    password: "valid_password",
+    idToken: "valid_token",
+    localId: "valid_localId",
   };
 
   describe("When setUserAction has been called with user data", () => {
