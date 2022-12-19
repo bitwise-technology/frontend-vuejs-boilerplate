@@ -1,5 +1,5 @@
 <template>
-  <div id="login-component-container">
+  <form id="login-component-container" @submit.prevent="handleLogin">
     <div class="input-container">
       <label for="user-input" class="label">User</label>
       <input type="text" id="user-input" class="input" v-model="user.email" />
@@ -15,8 +15,8 @@
       />
     </div>
 
-    <button class="login-button" @click="handleLogin">Entrar</button>
-  </div>
+    <button class="login-button" type="submit">Entrar</button>
+  </form>
 </template>
 
 <script lang="ts">
@@ -25,7 +25,7 @@ import { defineComponent } from "vue";
 import { mapActions } from "pinia";
 import { userStore } from "../stores/userStore";
 
-import type { User } from "../types";
+import type { AuthRequest, User } from "../types";
 import type { AxiosError } from "axios";
 
 export default defineComponent({
@@ -36,13 +36,12 @@ export default defineComponent({
       user: {
         email: "",
         password: "",
-      } as User,
+      } as AuthRequest,
     };
   },
   methods: {
     ...mapActions(userStore, [
       "setUserAction",
-      "setAuthResponseAction",
       "authWithEmailAndPasswordAction",
     ]),
 
@@ -59,7 +58,12 @@ export default defineComponent({
       try {
         const auth = await this.authWithEmailAndPasswordAction(this.user);
 
-        this.setAuthResponseAction(auth);
+        const user: User = {
+          name: auth.displayName,
+          ...auth,
+        };
+
+        this.setUserAction(user);
         this.navigateToLoginConfirmation();
       } catch (error) {
         const typedError = error as AxiosError;
