@@ -15,22 +15,31 @@
       />
     </div>
 
-    <button class="login-button" type="submit">Entrar</button>
+    <button-component
+      type="submit"
+      bg-color="rgb(99, 204, 99)"
+      text-color="white"
+      text="Entrar"
+    >
+      Entrar
+    </button-component>
   </form>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import ButtonComponent from "./ButtonComponent.vue";
 
 import { mapActions } from "pinia";
 import { userStore } from "../stores/userStore";
 
 import type { AuthRequest, User } from "../types";
-import type { AxiosError } from "axios";
 
 export default defineComponent({
   name: "LoginComponent",
-
+  components: {
+    ButtonComponent,
+  },
   data() {
     return {
       user: {
@@ -55,19 +64,22 @@ export default defineComponent({
     },
 
     async handleLogin() {
-      try {
-        const auth = await this.authWithEmailAndPasswordAction(this.user);
+      const auth = await this.authWithEmailAndPasswordAction(this.user);
+
+      if (auth.status === 200 && auth.data) {
+        const { displayName, email, idToken, localId } = auth.data;
 
         const user: User = {
-          name: auth.displayName,
-          ...auth,
+          displayName,
+          email,
+          idToken,
+          localId,
         };
 
         this.setUserAction(user);
         this.navigateToLoginConfirmation();
-      } catch (error) {
-        const typedError = error as AxiosError;
-        console.log(typedError);
+      } else {
+        alert(`Status: ${auth.status}, Message: ${auth.message}`);
       }
     },
   },
