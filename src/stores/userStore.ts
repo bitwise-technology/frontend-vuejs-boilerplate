@@ -17,14 +17,19 @@ export const userStore = defineStore("user", {
     async authWithEmailAndPasswordAction(
       authRequest: AuthRequest
     ): Promise<AuthResponse> {
-      const response = await api.post(
-        "/accounts:signInWithPassword",
-        authRequest
-      );
+      try {
+        const response = await api.post(
+          "/accounts:signInWithPassword",
+          authRequest
+        );
 
-      //this.setAuthResponseAction(response.data);
-
-      return response.data;
+        return response;
+      } catch (error: any) {
+        return {
+          status: error.response.status,
+          message: error.response.data.error.message,
+        };
+      }
     },
   },
 });
