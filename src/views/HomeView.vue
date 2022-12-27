@@ -19,6 +19,7 @@
     <section class="options-container">
       <div class="buttons-container">
         <button-component
+          id="navigate-to-auth"
           text="Exemplo de autenticação"
           textColor="white"
           bgColor="#91087D"
