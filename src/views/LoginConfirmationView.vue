@@ -1,6 +1,6 @@
 <template>
   <div id="home-view-container">
-    <login-confirmation-component :login="login" />
+    <login-confirmation-component />
   </div>
 </template>
 
@@ -9,9 +9,6 @@ import { defineComponent } from "vue";
 import LoginConfirmationComponent from "../components/LoginConfirmationComponent.vue";
 
 export default defineComponent({
-  props: {
-    login: { type: String, required: true },
-  },
   components: {
     LoginConfirmationComponent,
   },

@@ -15,7 +15,6 @@ const router = createRouter({
       path: "/login-confirmation/:login",
       name: "login-confirmation",
       component: LoginConfirmationView,
-      props: true,
     },
   ],
 });

@@ -1,18 +1,21 @@
 <template>
   <div id="login-confirmation-component-container">
-    <span>Bem vindo, {{ login }}!</span>
+    <span>Bem vindo, {{ email }}!</span>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { userStore } from "../stores/userStore";
 
 export default defineComponent({
   name: "LoginConfirmationComponent",
 
-  props: {
-    login: { type: String, required: true },
-  },
+  data() {
+    return {
+      email: userStore().user.email,
+    }
+  }
 });
 </script>
 
