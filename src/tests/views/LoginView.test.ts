@@ -1,12 +1,12 @@
-import HomeView from "@/views/HomeView.vue";
+import LoginView from "@/views/LoginView.vue";
 import { describe, expect, test } from "vitest";
 import { mount } from "@vue/test-utils";
 
-describe("Given HomeView", () => {
-  expect(HomeView).toBeTruthy();
+describe("Given LoginView", () => {
+  expect(LoginView).toBeTruthy();
 
-  describe("When HomeView mounted", () => {
-    const wrapper = mount(HomeView);
+  describe("When LoginView mounted", () => {
+    const wrapper = mount(LoginView);
 
     test("Then LoginComponent should be visible", () => {
       const loginComponent = wrapper.findComponent({ name: "LoginComponent" });

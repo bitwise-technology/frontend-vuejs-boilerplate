@@ -8,6 +8,12 @@ describe("Example Test", { testIsolation: false }, () => {
     cy.visit("/");
   });
 
+  it("should navigate to LoginView on button click", () => {
+    cy.get("#navigate-to-auth").click();
+
+    cy.location("pathname").should("match", /\/login$/);
+  });
+
   it("should display LoginComponent", () => {
     cy.get("#login-component-container").should("be.visible");
   });
