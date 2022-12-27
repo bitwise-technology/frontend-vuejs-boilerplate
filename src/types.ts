@@ -1,5 +1,5 @@
 export type User = {
-  name: string;
+  displayName: string;
   email: string;
   idToken: string;
   localId: string;
@@ -11,10 +11,14 @@ export type AuthRequest = {
 };
 
 export type AuthResponse = {
-  displayName: string;
-  email: string;
-  idToken: string;
-  kind: string;
-  localId: string;
-  registered: boolean;
+  status: number | undefined;
+  message?: string;
+  data?: {
+    displayName: string;
+    email: string;
+    idToken: string;
+    kind: string;
+    localId: string;
+    registered: boolean;
+  };
 };
