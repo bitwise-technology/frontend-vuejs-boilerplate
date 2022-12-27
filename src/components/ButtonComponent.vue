@@ -28,7 +28,7 @@ export default defineComponent({
   },
   methods: {
     handleOnPress() {
-      this.onPres();
+      this.onPress();
     },
   },
 });
