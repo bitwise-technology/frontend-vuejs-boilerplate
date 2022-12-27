@@ -1,5 +1,5 @@
 <template>
-  <button @click="onPress" :style="`background-color: ${bgColor}`">
+  <button @click="handleOnPress" :style="`background-color: ${bgColor}`">
     <span :style="`color: ${textColor}`">{{ text }}</span>
   </button>
 </template>
@@ -24,6 +24,11 @@ export default defineComponent({
     },
     onPress: {
       type: Function,
+    },
+  },
+  methods: {
+    handleOnPress() {
+      this.onPres();
     },
   },
 });
