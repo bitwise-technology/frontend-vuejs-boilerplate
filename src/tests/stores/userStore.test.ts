@@ -9,7 +9,7 @@ describe("Given userStore", () => {
   const store = userStore();
 
   const providedUser: User = {
-    name: "valid_name",
+    displayName: "valid_name",
     email: "valid_email",
     idToken: "valid_token",
     localId: "valid_localId",
