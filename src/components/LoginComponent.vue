@@ -20,6 +20,7 @@
     </div>
 
     <button-component
+      id="login-button"
       class="bg-secondary text-light"
       type="submit"
       text="Entrar"
@@ -60,9 +61,6 @@ export default defineComponent({
     navigateToLoginConfirmation() {
       this.$router.push({
         name: "login-confirmation",
-        params: {
-          login: this.user.email,
-        },
       });
     },
 
