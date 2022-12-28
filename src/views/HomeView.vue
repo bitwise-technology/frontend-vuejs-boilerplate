@@ -20,9 +20,8 @@
       <div class="buttons-container">
         <button-component
           id="navigate-to-auth"
+          class="bg-primary text-light"
           text="Exemplo de autenticação"
-          textColor="white"
-          bgColor="#91087D"
           :onPress="navigateToLoginView"
         />
       </div>

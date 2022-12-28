@@ -1,6 +1,6 @@
 <template>
-  <button @click="handleOnPress" :style="`background-color: ${bgColor}`">
-    <span :style="`color: ${textColor}`">{{ text }}</span>
+  <button @click="handleOnPress">
+    <span>{{ text }}</span>
   </button>
 </template>
 
@@ -10,15 +10,7 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "ButtonComponent",
   props: {
-    bgColor: {
-      type: String,
-      required: true,
-    },
     text: {
-      type: String,
-      required: true,
-    },
-    textColor: {
       type: String,
       required: true,
     },
@@ -47,7 +39,7 @@ button {
   border-radius: 8px;
   padding: 0 16px;
   cursor: pointer;
-  box-shadow: 4px 4px 10px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 span {
