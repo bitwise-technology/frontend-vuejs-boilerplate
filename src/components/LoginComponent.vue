@@ -1,12 +1,16 @@
 <template>
-  <form id="login-component-container" @submit.prevent="handleLogin">
+  <form
+    id="login-component-container"
+    class="bg-primary"
+    @submit.prevent="handleLogin"
+  >
     <div class="input-container">
-      <label for="user-input" class="label">User</label>
+      <label for="user-input" class="label text-light">User</label>
       <input type="text" id="user-input" class="input" v-model="user.email" />
     </div>
 
     <div class="input-container">
-      <label for="password-input" class="label">Password</label>
+      <label for="password-input" class="label text-light">Password</label>
       <input
         type="text"
         id="password-input"
@@ -16,9 +20,8 @@
     </div>
 
     <button-component
+      class="bg-secondary text-light"
       type="submit"
-      bg-color="rgb(99, 204, 99)"
-      text-color="white"
       text="Entrar"
     >
       Entrar
@@ -96,7 +99,6 @@ export default defineComponent({
 
   align-items: center;
   justify-content: center;
-  background-color: rgb(170, 8, 170);
 }
 
 .input-container {
@@ -111,7 +113,6 @@ export default defineComponent({
 }
 
 .input-container label {
-  color: white;
   margin: 0 0 4px 0;
 }
 
@@ -121,16 +122,5 @@ export default defineComponent({
   border: 0;
   padding: 0 8px;
   box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.2);
-}
-
-.login-button {
-  width: 90px;
-  height: 45px;
-
-  border-radius: 12px;
-
-  background-color: rgb(99, 204, 99);
-  border: 0;
-  color: white;
 }
 </style>
