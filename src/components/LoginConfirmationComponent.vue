@@ -1,5 +1,5 @@
 <template>
-  <div id="login-confirmation-component-container">
+  <div id="login-confirmation-component-container" class="bg-primary">
     <span>Bem vindo, {{ email }}!</span>
   </div>
 </template>
@@ -14,8 +14,8 @@ export default defineComponent({
   data() {
     return {
       email: userStore().user.email,
-    }
-  }
+    };
+  },
 });
 </script>
 
@@ -29,7 +29,6 @@ export default defineComponent({
 
   align-items: center;
   justify-content: center;
-  background-color: rgb(170, 8, 170);
 }
 
 span {
