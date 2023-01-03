@@ -1,6 +1,6 @@
 <template>
   <button @click="handleOnPress">
-    <span>{{ text }}</span>
+    <slot />
   </button>
 </template>
 
@@ -10,10 +10,6 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "ButtonComponent",
   props: {
-    text: {
-      type: String,
-      required: true,
-    },
     onPress: {
       type: Function,
     },
@@ -40,9 +36,6 @@ button {
   padding: 0 16px;
   cursor: pointer;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
-}
-
-span {
   font-size: 16px;
 }
 </style>
