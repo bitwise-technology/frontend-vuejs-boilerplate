@@ -10,11 +10,10 @@ describe("Given LoginConfirmationComponent", () => {
   setActivePinia(createPinia());
 
   test("Should display welcome message with storaged user data", () => {
-    
     const store = userStore();
 
     const providedUser: User = {
-      name: "valid_name",
+      displayName: "valid_name",
       email: "valid_email",
       idToken: "valid_token",
       localId: "valid_localId",
