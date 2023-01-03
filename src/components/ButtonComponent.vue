@@ -30,7 +30,6 @@ button {
   align-items: center;
   justify-content: center;
   height: 60px;
-  min-width: 120px;
   border: none;
   border-radius: 8px;
   padding: 0 16px;
