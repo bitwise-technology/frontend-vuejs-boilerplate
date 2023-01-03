@@ -21,11 +21,12 @@
 
     <button-component
       id="login-button"
-      class="bg-secondary text-light"
+      class="bg-secondary text-light btn-lg"
       type="submit"
-      text="Entrar"
+      :disabled="loading"
     >
-      Entrar
+      <span v-if="!loading">Entrar</span>
+      <div v-else class="lds-dual-ring" />
     </button-component>
   </form>
 </template>
@@ -50,6 +51,7 @@ export default defineComponent({
         email: "",
         password: "",
       } as AuthRequest,
+      loading: false,
     };
   },
   methods: {
@@ -65,8 +67,9 @@ export default defineComponent({
     },
 
     async handleLogin() {
+      this.loading = true;
       const auth = await this.authWithEmailAndPasswordAction(this.user);
-
+      this.loading = false;
       if (auth.status === 200 && auth.data) {
         const { displayName, email, idToken, localId } = auth.data;
 
