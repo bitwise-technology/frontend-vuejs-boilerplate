@@ -21,9 +21,10 @@
         <button-component
           id="navigate-to-auth"
           class="bg-primary text-light"
-          text="Exemplo de autenticação"
           :onPress="navigateToLoginView"
-        />
+        >
+          Exemplo de Autenticação
+        </button-component>
       </div>
     </section>
   </div>
